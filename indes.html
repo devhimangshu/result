@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Higher Secondary Examination Result - 2024</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #ffffff;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      text-align: center;
+    }
+    h5 {
+      font-size: 20px;
+      color: #003366;
+      margin-bottom: 0;
+    }
+    small span {
+      color: #003366;
+    }
+    h4 {
+      margin: 20px 0;
+      color: maroon;
+      font-weight: bold;
+    }
+    .form-control {
+      width: 120px;
+      display: inline-block;
+      margin: 0 5px;
+    }
+    .captcha-box {
+      font-size: 22px;
+      font-weight: bold;
+      background-color: white;
+      border: 1px solid #000;
+      padding: 5px 15px;
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+    .captcha-input {
+      width: 120px;
+      border: 2px solid #4CAF50;
+      text-align: center;
+    }
+    .btn {
+      margin: 10px 5px;
+    }
+    .disclaimer {
+      font-size: 12px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h5>West Bengal Council of Higher Secondary Education</h5>
+    <p><small>Hosted by <span>National Informatics Centre</span></small></p>
+    <p><small>Data Provided by <span>West Bengal Council of Higher Secondary Education</span></small></p>
+    <h4>Higher Secondary Examination Result - 2025</h4>
+
+    <form id="resultForm">
+      <div class="mb-3">
+        <label class="form-label">Enter Your Roll</label>
+        <input type="text" class="form-control" id="roll" required>
+        <label class="form-label">No.</label>
+        <input type="text" class="form-control" id="no" required>
+      </div>
+
+      <div class="mb-3">
+        <div class="captcha-box" id="captcha"></div>
+        <label class="form-label">Enter Captcha:</label>
+        <input type="text" class="form-control captcha-input" id="captchaInput" required>
+      </div>
+
+      <button type="submit" class="btn btn-secondary">Submit</button>
+      <button type="reset" class="btn btn-outline-secondary">Reset</button>
+    </form>
+
+    <p class="disclaimer"><b>DISCLAIMER</b>: The Board/Council/Institution/University is responsible for any inadvertent error that may have crept into the results being published on NET. The results published on net are for immediate information to the examinees and should not be treated as original mark sheets.</p>
+  </div>
+
+  <script>
+    function generateCaptcha() {
+      return Math.floor(10000 + Math.random() * 90000).toString();
+    }
+
+    const captchaBox = document.getElementById("captcha");
+    const captchaCode = generateCaptcha();
+    captchaBox.textContent = captchaCode;
+
+    document.getElementById("resultForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const roll = document.getElementById("roll").value.trim();
+      const no = document.getElementById("no").value.trim();
+      const captchaInput = document.getElementById("captchaInput").value.trim();
+
+      if (captchaInput !== captchaCode) {
+        alert("Incorrect captcha. Please try again.");
+        return;
+      }
+
+      if (roll === "110421" && no === "1287") {
+        window.location.href = "result.html";
+      } else {
+        alert("Invalid Roll or No. Please try again.");
+      }
+    });
+  </script>
+</body>
+</html>
